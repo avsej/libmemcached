@@ -34,6 +34,7 @@ nobase_include_HEADERS+= \
 			 libmemcached/flush.h \
 			 libmemcached/flush_buffers.h \
 			 libmemcached/get.h \
+			 libmemcached/touch.h \
 			 libmemcached/hash.h \
 			 libmemcached/memcached.h \
 			 libmemcached/memcached.hpp \
@@ -97,6 +98,7 @@ libmemcached_libmemcached_la_SOURCES = \
 				       libmemcached/flush.c \
 				       libmemcached/flush_buffers.c \
 				       libmemcached/get.c \
+				       libmemcached/touch.c \
 				       libmemcached/hash.c \
 				       libmemcached/hosts.c \
 				       libmemcached/io.c \

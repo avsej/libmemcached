@@ -453,6 +453,7 @@ static memcached_return_t binary_read_one_response(memcached_server_write_instan
     case PROTOCOL_BINARY_CMD_APPEND:
     case PROTOCOL_BINARY_CMD_PREPEND:
     case PROTOCOL_BINARY_CMD_DELETE:
+    case PROTOCOL_BINARY_CMD_TOUCH:
       {
         WATCHPOINT_ASSERT(bodylen == 0);
         return MEMCACHED_SUCCESS;

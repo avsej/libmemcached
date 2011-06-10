@@ -5246,6 +5246,55 @@ static test_return_t memcached_get_by_key_MEMCACHED_NOTFOUND(memcached_st *memc)
   return TEST_SUCCESS;
 }
 
+static test_return_t test_memcached_touch(memcached_st *memc)
+{
+  test_return_t test_rc;
+  test_rc= pre_binary(memc);
+
+  if (test_rc != TEST_SUCCESS)
+    return test_rc;
+
+  const char *key= "touchkey";
+  const char *val= "touchval";
+  size_t len;
+  uint32_t flags;
+  memcached_return rc;
+  char *value;
+
+  value= memcached_get(memc, key, strlen(key), &len, &flags, &rc);
+  test_false(value);
+  test_true(len == 0);
+  test_true(rc == MEMCACHED_NOTFOUND);
+
+  rc= memcached_set(memc, key, strlen(key), val, strlen(val), 2, 0);
+  test_true(rc == MEMCACHED_SUCCESS);
+
+  sleep(1);
+
+  value= memcached_get(memc, key, strlen(key), &len, &flags, &rc);
+  test_true(strcmp(value, val) == 0);
+  test_true(len == 8);
+  test_true(rc == MEMCACHED_SUCCESS);
+
+  rc= memcached_touch(memc, key, strlen(key), 3);
+  test_true(rc == MEMCACHED_SUCCESS);
+
+  sleep(2);
+
+  value= memcached_get(memc, key, strlen(key), &len, &flags, &rc);
+  test_true(strcmp(value, val) == 0);
+  test_true(len == 8);
+  test_true(rc == MEMCACHED_SUCCESS);
+
+  sleep(2);
+
+  value= memcached_get(memc, key, strlen(key), &len, &flags, &rc);
+  test_false(value);
+  test_true(len == 0);
+  test_true(rc == MEMCACHED_NOTFOUND);
+
+  return TEST_SUCCESS;
+}
 
 static test_return_t ketama_compatibility_libmemcached(memcached_st *trash)
 {
@@ -6534,6 +6583,11 @@ test_st error_conditions[] ={
   {0, 0, (test_callback_fn)0}
 };
 
+test_st touch_tests[] ={
+  {"memcached_touch", 0, (test_callback_fn)test_memcached_touch},
+  {0, 0, (test_callback_fn)0}
+};
+
 collection_st collection[] ={
 #if 0
   {"hash_sanity", 0, 0, hash_sanity},
@@ -6596,6 +6650,7 @@ collection_st collection[] ={
   {"behaviors", 0, 0, behavior_tests},
   {"regression_binary_vs_block", (test_callback_fn)key_setup, (test_callback_fn)key_teardown, regression_binary_vs_block},
   {"error_conditions", 0, 0, error_conditions},
+  {"touch_tests", 0, 0, touch_tests},
   {0, 0, 0, 0}
 };
 

@@ -42,6 +42,7 @@
 #include <libmemcached/flush.h>
 #include <libmemcached/flush_buffers.h>
 #include <libmemcached/get.h>
+#include <libmemcached/touch.h>
 #include <libmemcached/hash.h>
 #include <libmemcached/parse.h>
 #include <libmemcached/quit.h>

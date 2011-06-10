@@ -114,6 +114,7 @@ extern "C"
         PROTOCOL_BINARY_CMD_FLUSHQ = 0x18,
         PROTOCOL_BINARY_CMD_APPENDQ = 0x19,
         PROTOCOL_BINARY_CMD_PREPENDQ = 0x1a,
+        PROTOCOL_BINARY_CMD_TOUCH = 0x1c,
 
         PROTOCOL_BINARY_CMD_SASL_LIST_MECHS = 0x20,
         PROTOCOL_BINARY_CMD_SASL_AUTH = 0x21,
@@ -389,6 +390,25 @@ extern "C"
      * See section 4
      */
     typedef protocol_binary_response_no_extras protocol_binary_response_stats;
+
+    /**
+     * Definition of the packet used by the touch command.
+     */
+    typedef union {
+        struct {
+            protocol_binary_request_header header;
+            struct {
+                uint32_t expiration;
+            } body;
+        } message;
+        uint8_t bytes[sizeof(protocol_binary_request_header) + 4];
+    } protocol_binary_request_touch;
+
+    /**
+     * Definition of the packet returned from the touch command
+     */
+    typedef protocol_binary_response_no_extras protocol_binary_response_touch;
+
 
     /**
      * Definition of a request for a range operation.
