@@ -44,7 +44,7 @@ single host into. In the for loop you build a C<memcached_server_st>
 pointer that you then later feed via memcached_server_push() into the
 C<memcached_st> structure.
 
-You can reuse the C<memcached_server_st> object with multile C<memcached_st>
+You can reuse the C<memcached_server_st> object with multiple C<memcached_st>
 structures.
 
 =head2 Adding a value to the server
@@ -62,7 +62,7 @@ structures.
 
   for (x= 0; x < 1; x++)
   {
-    rc= memcached_set(memc, key, strlen(key), 
+    rc= memcached_set(memc, key, strlen(key),
     value, value_length,
     (time_t)0, (uint32_t)0);
     assert(rc == MEMCACHED_SUCCESS);
@@ -88,7 +88,7 @@ It is best practice to always look at the return value of any operation.
   rc= memcached_mget(memc, keys, key_length, 3);
 
   x= 0;
-  while ((return_value= memcached_fetch(memc, return_key, &return_key_length, 
+  while ((return_value= memcached_fetch(memc, return_key, &return_key_length,
                                         &return_value_length, &flags, &rc)))
   {
     free(return_value);

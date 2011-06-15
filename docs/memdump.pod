@@ -8,8 +8,8 @@ memdump - Dump a list of keys from a server.
 
 =head1 DESCRIPTION
 
-B<memdump> currently dumps a list of "keys" from all servers that 
-it is told to fetch from. Because memcached does not guarentee to
+B<memdump> currently dumps a list of "keys" from all servers that
+it is told to fetch from. Because memcached does not guarantee to
 provide all keys it is not possible to get a complete "dump".
 
 For a full list of operations run the tool with the B<--help> option.

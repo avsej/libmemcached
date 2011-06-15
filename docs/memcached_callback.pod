@@ -10,13 +10,13 @@ C Client Library for memcached (libmemcached, -lmemcached)
 
   #include <memcached.h>
 
-  memcached_return_t 
-    memcached_callback_set (memcached_st *ptr, 
-                            memcached_callback_t flag, 
+  memcached_return_t
+    memcached_callback_set (memcached_st *ptr,
+                            memcached_callback_t flag,
                             void *data);
 
   void *
-    memcached_callback_get (memcached_st *ptr, 
+    memcached_callback_get (memcached_st *ptr,
                             memcached_callback_t flag,
                             memcached_return_t *error);
 
@@ -30,21 +30,21 @@ memcached_callback_get() takes a callback flag and returns the structure or
 function set by memcached_callback_set().
 
 memcached_callback_set() changes the function/structure assigned by a
-callback flag. No connections are reset. 
+callback flag. No connections are reset.
 
-You can use MEMCACHED_CALLBACK_USER_DATA to provide custom context if required for any 
+You can use MEMCACHED_CALLBACK_USER_DATA to provide custom context if required for any
 of the callbacks
 
 =over 4
 
 =item MEMCACHED_CALLBACK_CLEANUP_FUNCTION
 
-When memcached_delete() is called this function will be excuted. At the
+When memcached_delete() is called this function will be executed. At the
 point of its execution all connections have been closed.
 
 =item MEMCACHED_CALLBACK_CLONE_FUNCTION
 
-When memcached_delete() is called this function will be excuted. At the
+When memcached_delete() is called this function will be executed. At the
 point of its execution all connections have been closed.
 
 =item MEMCACHED_CALLBACK_PREFIX_KEY
@@ -58,7 +58,7 @@ of a key which is too long MEMCACHED_BAD_KEY_PROVIDED will be returned.
 
 =item MEMCACHED_CALLBACK_USER_DATA
 
-This allows you to store a pointer to a specifc piece of data. This can be
+This allows you to store a pointer to a specific piece of data. This can be
 retrieved from inside of memcached_fetch_execute(). Cloning a memcached_st
 will copy the pointer to the clone.
 
@@ -76,7 +76,7 @@ DEPRECATED: use memcached_set_memory_allocators instead.
 
 =item  MEMCACHED_CALLBACK_GET_FAILURE
 
-This function implements the read through cache behavior. On failure of retrieval this callback will be called. 
+This function implements the read through cache behavior. On failure of retrieval this callback will be called.
 You are responsible for populating the result object provided. This result object will then be stored in the server and
 returned to the calling process. You must clone the memcached_st in order to
 make use of it. The value will be stored only if you return

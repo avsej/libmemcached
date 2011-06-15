@@ -39,7 +39,7 @@ C Client Library for memcached (libmemcachedutil, -lmemcachedutil)
 memcached_pool_create() is used to create a connection pool of objects you
 may use to remove the overhead of using memcached_clone for short
 lived C<memcached_st> objects. The mmc argument should be an
-initialised C<memcached_st> structure, and a successfull invocation of
+initialised C<memcached_st> structure, and a successful invocation of
 memcached_pool_create takes full ownership of the variable (until it
 is released by memcached_pool_destroy). The C<initial> argument
 specifies the initial size of the connection pool, and the C<max>

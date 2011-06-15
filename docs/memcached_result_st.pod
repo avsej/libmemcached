@@ -57,7 +57,7 @@ memcached_result_create() will either allocate memory for a
 memcached_result_st or will initialize a structure passed to it.
 
 memcached_result_free() will deallocate any memory attached to the
-structure. If the structure was also alloacted, it will deallocate it.
+structure. If the structure was also allocated, it will deallocate it.
 
 memcached_result_key_value() returns the key value associated with the
 current result object.

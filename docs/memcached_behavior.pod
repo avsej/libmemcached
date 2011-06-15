@@ -41,7 +41,7 @@ memcached_behavior_set() will flush and reset all connections.
 
 Causes libmemcached(3) to use the UDP transport when communicating
 with a memcached server. Not all I/O operations are supported
-when this behavior is enababled. The following operations will return
+when this behavior is enabled. The following operations will return
 C<MEMCACHED_NOT_SUPPORTED> when executed with the MEMCACHED_BEHAVIOR_USE_UDP
 enabled: memcached_version(), memcached_stat(), memcached_get(),
 memcached_get_by_key(), memcached_mget(), memcached_mget_by_key(),
@@ -59,7 +59,7 @@ as will attempting to add a UDP server when this behavior has not been enabled.
 
 =item MEMCACHED_BEHAVIOR_NO_BLOCK
 
-Causes libmemcached(3) to use asychronous IO. This is the fastest transport
+Causes libmemcached(3) to use asynchronous IO. This is the fastest transport
 available for storage functions.
 
 =item MEMCACHED_BEHAVIOR_SND_TIMEOUT
@@ -111,7 +111,7 @@ and the hash to MEMCACHED_HASH_MD5.
 
 =item MEMCACHED_BEHAVIOR_KETAMA_WEIGHTED
 
-Sets the default distribution to MEMCACHED_DISTRIBUTION_CONSISTENT_KETAMA with the weighted support.
+Sets the default distribution to MEMCACHED_DISTRIBUTION_CONSISTENT_KETAMA with the weighted support,
 and the hash to MEMCACHED_HASH_MD5.
 
 =item MEMCACHED_BEHAVIOR_KETAMA_HASH
@@ -132,9 +132,8 @@ Modify the timeout value that is used by poll(). The default value is -1. An sig
 
 =item MEMCACHED_BEHAVIOR_USER_DATA
 
-This allows you to store a pointer to a specifc piece of data. This can be
+This allows you to store a pointer to a specific piece of data. This can be
 retrieved from inside of memcached_fetch_execute(). Cloning a memcached_st
-
 will copy the pointer to the clone. This was deprecated in 0.14 in favor
 of memcached_callback_set(3). This will be removed in 0.15.
 
@@ -153,7 +152,7 @@ are valid keys.
 =item MEMCACHED_BEHAVIOR_SORT_HOSTS
 
 Enabling this will cause hosts that are added to be placed in the host list in
-sorted order. This will defeat consisten hashing.
+sorted order. This will defeat consistent hashing.
 
 =item MEMCACHED_BEHAVIOR_CONNECT_TIMEOUT
 
