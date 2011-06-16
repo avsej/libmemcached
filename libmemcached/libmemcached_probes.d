@@ -13,6 +13,8 @@ provider libmemcached {
 	probe memcached_flush_end();
 	probe memcached_set_start();
 	probe memcached_set_end();
+	probe memcached_touch_start();
+	probe memcached_touch_end();
 	probe memcached_add_start();
 	probe memcached_add_end();
 	probe memcached_replace_start();
